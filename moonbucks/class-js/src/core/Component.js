@@ -1,6 +1,6 @@
 export default class Component {
-  constructor(parentNode, props = {}, state = {}) {
-    this.parentNode = parentNode;
+  constructor(parentElement, props = {}, state = {}) {
+    this.parentElement = parentElement;
     this.props = props;
     this.state = state;
   }
@@ -10,10 +10,12 @@ export default class Component {
     this.render();
   }
 
-  render() {}
+  render() {
+    this.renderSelf();
+    this.addEventListeners();
+  }
 
   renderSelf() {}
-
   addEventListeners() {}
   fetchState() {}
 }
