@@ -1,0 +1,109 @@
+:root {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: 'NanumBarunGothic';
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $color-alabaster;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 37.5rem;
+  margin: 2rem auto;
+
+  background-color: $color-white;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  padding: 2.75rem 4rem 0;
+
+  .icon-button-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0.75rem;
+  }
+
+  .user-area {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.75rem;
+  }
+
+  h1.title {
+    font-size: 2.125rem;
+    line-height: 2.25rem;
+    font-weight: bold;
+    margin: 0 auto 2rem;
+  }
+
+  .nav {
+    align-self: center;
+    margin-bottom: 1.5rem;
+
+    ul {
+      display: flex;
+      gap: 0.25rem;
+      width: 22.5rem;
+      height: 2.25rem;
+
+      li {
+        flex-grow: 1;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+
+        &.selected {
+          background-color: $color-robins-egg-blue-20;
+
+          &:hover {
+            background-color: rgba(0, 188, 212, 0.25);
+          }
+        }
+      }
+    }
+  }
+}
+
+.main {
+  width: 100%;
+  padding: 1.5rem 4rem 2.25rem;
+}
+
+input {
+}
+
+.button {
+  width: 6.25rem;
+  font-size: 0.875rem;
+  background-color: $color-concrete;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+
+  &.accent {
+  }
+
+  &:hover {
+    filter: blightness(0.95);
+  }
+}
