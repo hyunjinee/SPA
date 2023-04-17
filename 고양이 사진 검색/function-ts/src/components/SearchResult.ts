@@ -1,31 +1,65 @@
+import { api } from '../shared/api';
 import { $ } from '../shared/dom';
 import { Cat } from '../shared/interface';
+import { renderImageInfo } from './ImageInfo';
 
-const SEARCH_RESULT_TEMPLATE = `
-  <section class="search-result">
+const SEARCH_RESULT_TEMPLATE = `<section class="search-result"></section>`;
 
-  </section>
-`;
-
-export const renderSearhResult = (data?: Cat[]) => {
+export const renderSearhResult = (cats?: Cat[]) => {
   $('#app')?.insertAdjacentHTML('beforeend', SEARCH_RESULT_TEMPLATE);
+  const $searchResult = $('.search-result') as HTMLDivElement;
 
-  if (data) {
-    const $searchResult = $('.search-result') as HTMLDivElement;
-    console.log(data);
-    $searchResult.innerHTML = data
-      .map(
-        (cat) => `
+  if (!cats) {
+    $searchResult.innerHTML = `
+      <div class="no-result">
+        <span>검색 결과가 없습니다.</span>
+      </div>
+    `;
+
+    return;
+  }
+
+  $searchResult.innerHTML = cats
+    .map(
+      (cat) => `
           <div class="item">
             <img src=${cat.url} alt=${cat.name} class="lazy"/>
             <span class="cat-name hidden">${cat.name}</span>
           </div>
         `
-      )
-      .join('');
-  }
+    )
+    .join('');
+
+  $searchResult.querySelectorAll('.item').forEach(($item, index) => {
+    $item.addEventListener('click', async () => {
+      const cat = await api.fetchCatDetails(cats[index].id);
+      console.log(cat);
+      renderImageInfo(cat);
+    });
+    $item.addEventListener('mouseover', () => {});
+    $item.addEventListener('mouseleave', () => {});
+  });
+
+  //       $item.addEventListener('click', () => {
+  //         this.onClick(this.data[index]);
+  //       });
+  //       $item.addEventListener('mouseover', () => {
+  //         const $catName = $item.querySelector('.cat-name');
+  //         $catName.style.visibility = 'visible';
+  //       });
+  //       $item.addEventListener('mouseleave', () => {
+  //         const $catName = $item.querySelector('.cat-name');
+  //         $catName.style.visibility = 'hidden';
+  //       });
 };
 
+// async (image) => {
+//   const { data } = await api.fetchCatDetails(image.id);
+//   this.$imageInfo.setState({
+//     visible: true,
+//     image: data,
+//   });
+// },
 // export default class SearchResult {
 //   $searchResult = null;
 //   data = null;

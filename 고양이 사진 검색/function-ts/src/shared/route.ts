@@ -1,16 +1,19 @@
-// export const go = (path: string) => {
-//   // window.history.pushState(null, '', path);
-//   render();
-// };
-
+import { api } from './api';
+import { WEBSITE_NAME } from './constants';
 import { renderSearchInput } from '../components/SearchInput';
 import { renderSearhResult } from '../components/SearchResult';
-import { WEBSITE_NAME } from './constants';
 
-export const render = () => {
+export const render = async () => {
   renderTitle();
   renderSearchInput();
-  renderSearhResult();
+
+  try {
+    const { data } = await api.fetchRandomCats();
+    renderSearhResult(data);
+  } catch (error) {
+    // 검색 결과 없이 렌더링
+    renderSearhResult();
+  }
 };
 
 export const renderTitle = () => {

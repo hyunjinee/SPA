@@ -3,3 +3,10 @@ export interface Cat {
   url: string;
   name: string;
 }
+
+export interface CatDetail {
+  name: string;
+  url: string;
+  temperament: string;
+  origin: string;
+}
