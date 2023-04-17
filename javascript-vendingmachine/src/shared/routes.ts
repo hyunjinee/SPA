@@ -1,12 +1,12 @@
-import { $ } from './utils/dom';
-import User from './state/User';
-import HeaderView from './view/HeaderView';
-import LoginPageView from './view/LoginPageView';
-import SignUpPageView from './view/SignUpPageView';
-import UpdateMyInfoPageView from './view/UpdateMyInfoPageView';
-import ProductPurchasePageView from './view/ProductPurchasePageView';
-import ProductManagementPageView from './view/ProductManagementPageView';
-import VendingMachineChargeManagementPageView from './view/VendingMachineChargeManagementPageView';
+import { $ } from './dom';
+import User from '../state/User';
+import HeaderView from '../view/HeaderView';
+import LoginPageView from '../view/LoginPageView';
+import SignUpPageView from '../view/SignUpPageView';
+import UpdateMyInfoPageView from '../view/UpdateMyInfoPageView';
+import ProductPurchasePageView from '../view/ProductPurchasePageView';
+import ProductManagementPageView from '../view/ProductManagementPageView';
+import VendingMachineChargeManagementPageView from '../view/VendingMachineChargeManagementPageView';
 
 const loadPageMethods = {
   login: LoginPageView.loadPage,

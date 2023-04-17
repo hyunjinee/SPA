@@ -1,4 +1,4 @@
-import { $ } from '../utils/dom';
+import { $ } from '../shared/dom';
 import { pageTemplate } from './template';
 
 class SignUpPageView {

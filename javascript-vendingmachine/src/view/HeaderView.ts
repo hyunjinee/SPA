@@ -1,5 +1,5 @@
 import User from '../state/User';
-import { $ } from '../utils/dom';
+import { $ } from '../shared/dom';
 import { pageTemplate, template } from './template';
 
 const titleText = Object.freeze({
