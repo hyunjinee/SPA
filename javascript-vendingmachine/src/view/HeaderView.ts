@@ -19,6 +19,15 @@ class HeaderView {
   $loginButton = $('#login-button', this.$container);
   $nav = $('.nav', this.$container);
 
+  constructor() {
+    this.$userArea.addEventListener('click', this.onClickUserArea);
+  }
+
+  onClickUserArea(event) {
+    if (event.target.id === 'logout-button') {
+    }
+  }
+
   updateOnPageChange(page: string) {
     this.updateTitle(page);
     this.updateMenuButton(page);

@@ -19,8 +19,8 @@ body {
   flex-direction: column;
   align-items: center;
   width: 37.5rem;
+  min-height: 42.1875rem;
   margin: 2rem auto;
-
   background-color: $color-white;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
@@ -31,35 +31,34 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-
   padding: 2.75rem 4rem 0;
 
-  .icon-button-area {
+  > .icon-button-area {
     position: absolute;
     top: 0;
     left: 0;
     margin: 0.75rem;
   }
 
-  .user-area {
+  > .user-area {
     position: absolute;
     top: 0;
     right: 0;
     margin: 0.75rem;
   }
 
-  h1.title {
+  > h1.title {
     font-size: 2.125rem;
     line-height: 2.25rem;
     font-weight: bold;
     margin: 0 auto 2rem;
   }
 
-  .nav {
+  > .nav {
     align-self: center;
     margin-bottom: 1.5rem;
 
-    ul {
+    > ul {
       display: flex;
       gap: 0.25rem;
       width: 22.5rem;
@@ -88,12 +87,23 @@ body {
 }
 
 input {
+  width: 100%;
+  border: 1px solid $color-nobel;
+  padding: 0.5rem;
+  border-radius: 5px;
+  -moz-appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 .button {
   width: 6.25rem;
   font-size: 0.875rem;
-  background-color: $color-concrete;
+  background: $color-concrete;
   padding: 0.5rem;
   border: none;
   border-radius: 5px;
@@ -101,9 +111,126 @@ input {
   cursor: pointer;
 
   &.accent {
+    background-color: $brand-color-accent;
+    color: $brand-color-accent-font;
+    font-weight: bold;
   }
 
   &:hover {
-    filter: blightness(0.95);
+    filter: brightness(0.95);
+  }
+}
+
+.text-button {
+  border: none;
+  background: none;
+  font-size: 1rem;
+  color: #3581d7;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  padding: 0 0.5rem;
+
+  > .button {
+    flex-grow: 1;
+    width: 3.125rem;
+  }
+}
+
+.table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border-top: 1px solid $color-alto;
+  margin-bottom: 1rem;
+
+  caption {
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 1rem 0;
+  }
+
+  tr {
+    border: none;
+  }
+
+  th {
+    font-weight: bold;
+  }
+
+  th,
+  td {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid $color-alto;
+  }
+}
+
+.table-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 1.25rem;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.form-section {
+  padding: 0 1rem 1.5rem;
+
+  form {
+    > label {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+  }
+}
+
+.thumbnail-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background: #d6f4f8;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.user-information-form-section {
+  display: flex;
+  flex-direction: column;
+  width: 18.75rem;
+  margin: 0 auto;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    > * {
+      width: 100%;
+    }
+  }
+
+  input {
+    margin-top: 0.25rem;
+    height: 2.25rem;
+  }
+
+  label {
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+      margin-bottom: 1.875rem;
+    }
   }
 }

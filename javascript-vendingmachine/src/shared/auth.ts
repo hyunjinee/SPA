@@ -1,4 +1,8 @@
-interface SignInfo {
+import User from '../state/User';
+import { UserInfo } from './interface';
+import { loadMainPage } from './routes';
+
+export interface SignInfo {
   email: string;
   password: string;
   name?: string;
@@ -27,7 +31,16 @@ export const signUp = async (signInfo: SignInfo) => {
     body: JSON.stringify(signInfo),
   });
   const data = await response.json();
-  return data;
+  const { id, email, name } = data.user;
+  const userAuth = {
+    accessToken: data.accessToken,
+    id,
+    expiration: Date.now() + 1000 * 60 * 60,
+  };
+
+  localStorage.setItem('userAuth', JSON.stringify(userAuth));
+  User.setUser({ id, email, name });
+  loadMainPage();
 };
 
 export const getSavedAuthInfo = () => {
@@ -71,21 +84,51 @@ export const requestUserInfo = async (userAuth: AuthInfo) => {
       throw new Error(message.slice(1, -1));
     }
 
-    const data = await response.json();
+    const { email, name } = (await response.json()) as Partial<UserInfo>;
 
-    return data;
+    User.setUser({
+      id,
+      email,
+      name,
+    });
   } catch (error) {
     console.error('에러', error.message);
   }
-  // return fetch(userInfoURL(id), {
-  //   method: 'GET',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     Authorization: accessToken,
-  //   },
-  // }).then((res) => {
-  //   if (!res.ok) {
+};
 
-  //   }
-  // });
+export const updateUserInfo = (newUserInfo: UserInfo) => {};
+
+export const logout = () => {
+  localStorage.removeItem('userAuth');
+  User.initialize();
+  loadMainPage();
+};
+
+export const login = async (loginInfo: SignInfo) => {
+  try {
+    const response = await fetch(`${currentAuthServer}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginInfo),
+    });
+
+    if (!response.ok) {
+      const message = await response.text();
+      throw new Error(message.slice(1, -1));
+    }
+
+    const data = await response.json();
+
+    const { id, email, name } = data.user;
+    const userAuth = {
+      accessToken: data.accessToken,
+      id,
+      expiration: Date.now() + 1000 * 60 * 60,
+    };
+    localStorage.setItem('userAuth', JSON.stringify(userAuth));
+    User.setUser({ id, email, name });
+    loadMainPage();
+  } catch (e) {}
 };

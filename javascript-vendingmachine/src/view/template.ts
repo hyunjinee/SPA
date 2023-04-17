@@ -38,6 +38,51 @@ export const pageTemplate = {
         </form>
     </section>
 `,
+
+  productPurchasePage: `
+    <section id="customer-charge-form-section">
+      <form id="customer-charge-form">
+        <label form="customer-charge-form">상품을 구매할 금액을 투입해주세요</label>
+        <div class="customer-charge-wrap">
+          <input type="number" name="customerCharge" placeholder="금액" form="customer-charge-form" required/>
+          <button id="customer-charge-submit-button" class="button accent">투입</button>
+        </div>
+      </form>
+      <p>투입한 금액: <span id="totla-customer-charge">0원</span></p>
+    </section>
+    <section id="product-table-section" class="table-section">
+      <table id="product-table" class="table">
+        <caption>구매 가능 상품 현황</caption>
+        <thead>
+          <tr>
+            <th width="25%">상품명</th>
+            <th width="25%">가격</th>
+            <th width="25%">수량</th>
+            <th width="25%">구매</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+    <section>
+      <table>
+        <caption>잔돈 반환</caption>
+        <thead>
+          <tr>
+            <th>동전</th>
+            <th>개수</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>500원</td><td>0개</td></tr>
+          <tr><td>100원</td><td>0개</td></tr>
+          <tr><td>50원</td><td>0개</td></tr>
+          <tr><td>10원</td><td>0개</td></tr>
+        </tbody>
+      </table>
+      <button id="return-change-button" class="button">반환</button>
+    </section>
+  `,
 };
 
 export const template = {

@@ -19,7 +19,6 @@ const loadPageMethods = {
 };
 
 const path = location.pathname;
-console.log(path);
 
 export const loadPage = (page: string) => {
   HeaderView.updateOnPageChange(page);

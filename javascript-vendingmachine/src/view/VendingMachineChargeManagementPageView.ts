@@ -1,5 +1,9 @@
+import { $ } from '../shared/dom';
+
 class VendingMachineChargeManagementPageView {
-  loadPage() {}
+  loadPage() {
+    $('main');
+  }
 }
 
 export default new VendingMachineChargeManagementPageView();

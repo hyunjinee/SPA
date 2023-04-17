@@ -1,4 +1,4 @@
-import { UserInfo } from '../interface';
+import { UserInfo } from '../shared/interface';
 
 class User implements UserInfo {
   isMember?: boolean;
@@ -7,6 +7,10 @@ class User implements UserInfo {
   name: string;
 
   constructor() {
+    this.initialize();
+  }
+
+  initialize() {
     this.isMember = false;
     this.id = null;
     this.email = null;

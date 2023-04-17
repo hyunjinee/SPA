@@ -13,7 +13,7 @@ export default class SearchInput {
     this.$searchInput.placeholder = '고양이를 검색해보세요.|';
     this.$searchInput.className = 'SearchInput';
     this.$searchRandom.className = 'SearchRandom';
-    this.$searchRecentWrapper.className = 'SearchReventWrapper';
+    this.$searchRecentWrapper.className = 'SearchRecentWrapper';
     this.$darkMode.className = 'DarkModeButton';
     this.$darkMode.innerText = '🌕';
     this.$searchRandom.innerText = '😽';
