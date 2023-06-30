@@ -32,9 +32,8 @@ export const renderSearhResult = (cats?: Cat[]) => {
 
   $searchResult.querySelectorAll('.item').forEach(($item, index) => {
     $item.addEventListener('click', async () => {
-      const cat = await api.fetchCatDetails(cats[index].id);
-      console.log(cat);
-      renderImageInfo(cat);
+      const { data } = await api.fetchCatDetails(cats[index].id);
+      renderImageInfo(data);
     });
     $item.addEventListener('mouseover', () => {});
     $item.addEventListener('mouseleave', () => {});

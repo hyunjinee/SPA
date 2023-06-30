@@ -3,8 +3,10 @@ import { CatDetail } from '../shared/interface';
 
 export const renderImageInfo = async (detail: CatDetail) => {
   const $imageInfo = document.createElement('div');
-  $('#app')?.append($imageInfo);
   $imageInfo.className = 'image-info';
+  $imageInfo.classList.remove('fade');
+
+  $('#app')?.append($imageInfo);
 
   $imageInfo.innerHTML = `
     <div class="content-wrapper">
@@ -15,10 +17,27 @@ export const renderImageInfo = async (detail: CatDetail) => {
       <img src="${detail.url}" alt="${detail.name}"/>
       <div class="description">
         <div>성격: ${detail.temperament}</div>
-        <div>태생: ${origin}</div>
+        <div>태생: ${detail.origin}</div>
       </div>
     </div>
   `;
+
+  $imageInfo.style.display = 'block';
+
+  document.addEventListener('click', (e) => {
+    if (
+      e.target === $imageInfo ||
+      e.target === $('.close') ||
+      e.target === $('.content-wrapper img')
+    ) {
+      $imageInfo.style.display = 'none';
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.keyCode == 27) {
+      $imageInfo.style.display = 'none';
+    }
+  });
 };
 
 // export default class ImageInfo {
