@@ -1,5 +1,6 @@
+import { $ } from '@spa/utils';
+
 import ListItem from '../models/ListItem';
-import { $ } from '../shared/dom';
 import { newItemEntryTemplate } from '../shared/template';
 import TodoListManager from '../shared/TodoListManager';
 
@@ -23,11 +24,7 @@ export default class NewItemEntry {
       }
 
       const itemdId = TodoListManager.instance.list.length
-        ? Number(
-            TodoListManager.instance.list[
-              TodoListManager.instance.list.length - 1
-            ].id
-          ) + 1
+        ? Number(TodoListManager.instance.list[TodoListManager.instance.list.length - 1].id) + 1
         : 1;
 
       const newItem = new ListItem(itemdId.toString(), newEntryText);

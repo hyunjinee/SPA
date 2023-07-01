@@ -6,6 +6,7 @@ export default class App {
   constructor(private $target: HTMLDivElement) {
     this.render();
   }
+
   render() {
     const $main = document.createElement('main');
     this.$target.append($main);

@@ -1,7 +1,7 @@
-import TodoListManager from '../shared/TodoListManager';
-import { $ } from '../shared/dom';
-import { todoListTemplate } from '../shared/template';
+import { $ } from '@spa/utils';
 
+import TodoListManager from '../shared/TodoListManager';
+import { todoListTemplate } from '../shared/template';
 export default class TodoListComponent {
   constructor(private $target: HTMLElement) {
     TodoListManager.subscribers.add(this.render.bind(this));

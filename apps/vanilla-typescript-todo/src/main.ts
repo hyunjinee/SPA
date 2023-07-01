@@ -1,6 +1,7 @@
-import App from './App';
-import { $ } from './shared/dom';
+import { $ } from '@spa/utils';
+
 import './style.css';
+import App from './App';
 
 const init = () => {
   const $app = $<HTMLDivElement>('#app');
