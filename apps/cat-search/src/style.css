@@ -34,57 +34,57 @@ body * {
   column-gap: 1.5em;
 }
 
-.search-wrapper {
+.SearchWrapper {
   display: flex;
   flex-direction: row;
 }
 
-.search-result {
+.SearchResult {
   margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(4, minmax(250px, 1fr));
   grid-gap: 10px;
 }
 
-.search-result img {
+.SearchResult img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.search-result .item {
+.SearchResult .item {
   background-color: #eee;
   display: inline-block;
   margin: 0 0 1em;
   width: 100%;
 }
 
-.search-input {
+.SearchInput {
   width: 100%;
   font-size: 30px;
   padding: 10px 15px;
   outline: none;
 }
 
-.search-random {
+.SearchRandom {
   font-size: 50px;
   margin-right: 5px;
   cursor: pointer;
 }
 
-.search-recent-wrapper {
+.SearchRecentWrapper {
   margin-top: 10px;
   margin-left: 50px;
   /* background-color: blue; */
 }
 
-.dark-mode-button {
+.DarkModeButton {
   font-size: 50px;
   margin-left: 5px;
   cursor: pointer;
 }
 
-.image-info {
+.ImageInfo {
   position: fixed;
   left: 0;
   top: 0;
@@ -93,17 +93,17 @@ body * {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.image-info .title {
+.ImageInfo .title {
   display: flex;
   justify-content: space-between;
 }
 
-.image-info .title,
-.image-info .description {
+.ImageInfo .title,
+.ImageInfo .description {
   padding: 5px;
 }
 
-.image-info .content-wrapper {
+.ImageInfo .content-wrapper {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -113,7 +113,7 @@ body * {
   border-radius: 5px;
 }
 
-.image-info .content-wrapper img {
+.ImageInfo .content-wrapper img {
   width: 100%;
 }
 
@@ -183,22 +183,22 @@ body {
 }
 
 @media only screen and (max-width: 992px) {
-  .search-result {
+  .SearchResult {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .search-result {
+  .SearchResult {
     grid-template-columns: repeat(2, 1fr);
   }
-  .image-info .content-wrapper {
+  .ImageInfo .content-wrapper {
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .search-result {
+  .SearchResult {
     display: block;
   }
 }
@@ -212,7 +212,7 @@ body {
   background-color: var(--background);
 }
 
-.image-info .fade {
+.ImageInfo.fade {
   animation: fadein 0.5s;
 }
 

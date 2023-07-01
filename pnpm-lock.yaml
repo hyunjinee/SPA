@@ -13,6 +13,10 @@ importers:
         version: 8.6.5
 
   apps/cat-search:
+    dependencies:
+      '@spa/utils':
+        specifier: workspace:^
+        version: link:../../packages/utils
     devDependencies:
       typescript:
         specifier: ^5.0.2
@@ -31,6 +35,10 @@ importers:
         version: 4.3.9
 
   apps/vanilla-typescript-todo:
+    dependencies:
+      '@spa/utils':
+        specifier: workspace:^
+        version: link:../../packages/utils
     devDependencies:
       typescript:
         specifier: ^5.0.2
@@ -38,6 +46,8 @@ importers:
       vite:
         specifier: ^4.3.9
         version: 4.3.9
+
+  packages/utils: {}
 
 packages:
 
