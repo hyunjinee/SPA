@@ -1,10 +1,10 @@
-import { ListItem } from '../models/ListItem';
-import TodoList from '../models/TodoList';
+import ListItem from '../models/ListItem';
 import { $ } from '../shared/dom';
 import { newItemEntryTemplate } from '../shared/template';
+import TodoListManager from '../shared/TodoListManager';
 
 export default class NewItemEntry {
-  constructor(private $target: HTMLElement, private todoList: TodoList) {
+  constructor(private $target: HTMLElement) {
     this.render();
   }
 
@@ -22,13 +22,17 @@ export default class NewItemEntry {
         return;
       }
 
-      const itemdId = this.todoList.list.length
-        ? Number(this.todoList.list[this.todoList.list.length - 1].id) + 1
+      const itemdId = TodoListManager.instance.list.length
+        ? Number(
+            TodoListManager.instance.list[
+              TodoListManager.instance.list.length - 1
+            ].id
+          ) + 1
         : 1;
 
       const newItem = new ListItem(itemdId.toString(), newEntryText);
 
-      this.todoList.addItem(newItem);
+      TodoListManager.instance.addItem(newItem);
     });
 
     const $addItemButton = $<HTMLButtonElement>('#addItem');

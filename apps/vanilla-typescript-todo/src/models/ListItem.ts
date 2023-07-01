@@ -4,7 +4,7 @@ export type ListItemType = {
   checked: boolean;
 };
 
-export class ListItem implements ListItemType {
+export default class ListItem implements ListItemType {
   constructor(
     private _id: string = '',
     private _item: string = '',

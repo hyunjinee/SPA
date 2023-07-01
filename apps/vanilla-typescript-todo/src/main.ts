@@ -8,6 +8,7 @@ const init = () => {
   if (!$app) {
     throw new Error("Can't find the app root element");
   }
+
   new App($app);
 };
 

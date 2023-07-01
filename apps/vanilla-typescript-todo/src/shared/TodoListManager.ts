@@ -1,4 +1,4 @@
-import { ListItem } from './ListItem';
+import ListItem from '../models/ListItem';
 
 type TodoListType = {
   list: ListItem[];
@@ -9,8 +9,9 @@ type TodoListType = {
   removeItem(id: string): void;
 };
 
-export default class TodoList implements TodoListType {
-  static instance = new TodoList();
+export default class TodoListManager implements TodoListType {
+  static instance = new TodoListManager();
+  static subscribers = new Set<Function>();
 
   private constructor(private _list: ListItem[] = []) {}
 
@@ -21,10 +22,15 @@ export default class TodoList implements TodoListType {
   addItem(itemObj: ListItem): void {
     this._list.push(itemObj);
     this.save();
+
+    TodoListManager.subscribers.forEach((subscriber) => subscriber());
   }
+
   removeItem(id: string): void {
     this._list = this._list.filter((item) => item.id !== id);
     this.save();
+
+    TodoListManager.subscribers.forEach((subscriber) => subscriber());
   }
 
   load(): void {
@@ -39,14 +45,18 @@ export default class TodoList implements TodoListType {
 
     parsedList.forEach((item) => {
       const newListItem = new ListItem(item._id, item._item, item._checked);
-      TodoList.instance.addItem(newListItem);
+      TodoListManager.instance.addItem(newListItem);
     });
   }
+
   save(): void {
     localStorage.setItem('todoList', JSON.stringify(this._list));
   }
+
   clearList(): void {
     this._list = [];
     this.save();
+
+    TodoListManager.subscribers.forEach((subscriber) => subscriber());
   }
 }
