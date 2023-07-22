@@ -1,0 +1,69 @@
+body {
+  background-color: #f2f2f2;
+  padding: 50px 50px;
+}
+
+.area {
+  margin: 10px 0;
+}
+
+#dropdown {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#page_title {
+  font-size: 1.5rem;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+}
+
+thead {
+  background: lightgray;
+  font-weight: bold;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+#table {
+  padding: 10px 0;
+  font-size: 1rem;
+}
+
+button.arrow {
+  color: red;
+}
+
+#pagination {
+  padding: 10px 10px;
+  text-align: center;
+  background-color: white;
+}
+
+#pagination > button {
+  margin: 0 10px;
+  font-size: 1rem;
+  font-weight: 550;
+  border: 0;
+  background-color: white;
+  cursor: pointer;
+}
+
+button.active {
+  color: red;
+}

@@ -15,13 +15,7 @@
   },
   "references": [
     {
-      "path": "packages/common-components"
-    },
-    {
-      "path": "packages/common-styles"
-    },
-    {
-      "path": "packages/common-utils"
+      "path": "packages/utils"
     }
   ],
   "exclude": ["packages/**/dist/**"],
